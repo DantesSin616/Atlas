@@ -1,5 +1,5 @@
 # 📦 Current Environment Inventory
-_Generated on Wed Apr 22 00:38:01 -04 2026 | WSL2/Linux_
+_Generated on Fri Apr 24 11:03:12 -04 2026 | WSL2/Linux_
 
 ## 🐧 APT (Manually Installed)
 aircrack-ng
@@ -41,6 +41,7 @@ zsh
 
 ## 🍺 Homebrew
 ### Formulae (explicitly installed)
+anomalyco/tap/opencode
 bat
 btop
 docker-completion
@@ -50,7 +51,6 @@ fastfetch
 fd
 fzf
 gemini-cli
-gettext
 gh
 git-delta
 go
@@ -58,20 +58,17 @@ lazydocker
 lazygit
 neovim
 powerlevel10k
-ripgrep
 steipete/tap/gogcli
 steipete/tap/wacli
 tldr
-tree-sitter@0.25
 uv
-xsel
 yakitrak/yakitrak/obsidian-cli
-zlib
 zoxide
 zsh-autosuggestions
 zsh-syntax-highlighting
 
 ### Taps
+anomalyco/tap
 steipete/tap
 yakitrak/yakitrak
 
