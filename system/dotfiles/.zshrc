@@ -70,7 +70,7 @@ fi
 alias brew-up="brew update && brew upgrade"
 alias apt-up="sudo apt update && sudo apt full-upgrade -y"
 alias c='cd'
-alias docker='lazydocker'
+# alias docker='lazydocker'
 alias ls='eza --icons'
 alias cat='bat'
 alias help='tldr'
@@ -116,3 +116,21 @@ fi
 # Run compinit safely
 autoload -Uz compinit
 compinit -C 2>/dev/null
+export PATH="$HOME/.local/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/daimo/google-cloud-sdk/path.zsh.inc' ]; then . '/home/daimo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/daimo/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/daimo/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Browser-Use
+export PATH="/home/daimo/.browser-use-env/bin:/home/daimo/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/daimo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

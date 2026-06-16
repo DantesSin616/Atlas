@@ -75,6 +75,12 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
+-- Tab settings: use 2 spaces for indentation
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.softtabstop = 2
+
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
@@ -576,17 +582,17 @@ require("lazy").setup({
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
+				clangd = {},
+				gopls = {},
+				pyright = {},
+				rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
+				ts_ls = {},
 				--
 
 				lua_ls = {
@@ -741,7 +747,7 @@ require("lazy").setup({
 				-- <c-k>: Toggle signature help
 				--
 				-- See :h blink-cmp-config-keymap for defining your own keymap
-				preset = "default",
+				preset = "super-tab",
 
 				-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
 				--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -766,6 +772,12 @@ require("lazy").setup({
 				},
 			},
 
+			completion = {
+				-- By default, you may press `<c-space>` to show the documentation.
+				-- Optionally, set `auto_show = true` to show the documentation after a delay.
+				documentation = { auto_show = false, auto_show_delay_ms = 500 },
+			},
+
 			snippets = { preset = "luasnip" },
 
 			-- Blink.cmp includes an optional, recommended rust fuzzy matcher,
@@ -780,6 +792,17 @@ require("lazy").setup({
 			-- Shows a signature help window while you type arguments for a function
 			signature = { enabled = true },
 		},
+	},
+
+	{ -- VS Code-style codicons for LSP symbols and completions
+		"onsails/lspkind.nvim",
+		lazy = true,
+		config = function()
+			require("lspkind").init({
+				preset = "codicons",
+				symbol_map = require("lspkind").presets.codicons,
+			})
+		end,
 	},
 
 	-- Highlight todo, notes, etc in comments
@@ -842,7 +865,7 @@ require("lazy").setup({
 				sync_install = false,
 				ignore_install = {},
 
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "python" },
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "python", "go", "javascript", "typescript", "rust" },
 				auto_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },

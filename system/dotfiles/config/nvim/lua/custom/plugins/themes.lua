@@ -1,22 +1,7 @@
 return {
 	{
-		"scottmckendry/cyberdream.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("cyberdream").setup({
-				transparent = true,
-				italic_comments = true,
-				hide_fillchars = true,
-				borderless_pickers = true,
-				terminal_colors = true,
-			})
-			vim.cmd("colorscheme cyberdream")
-		end,
-	},
-
-	{
 		"EdenEast/nightfox.nvim",
+		lazy = false,
 		priority = 1000,
 		config = function()
 			require("nightfox").setup({
@@ -24,6 +9,7 @@ return {
 					transparent = true,
 				},
 			})
+			vim.cmd("colorscheme nightfox")
 		end,
 	},
 }
